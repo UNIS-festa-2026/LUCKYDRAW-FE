@@ -6,6 +6,7 @@ import Pay from "./pages/Pay";
 import Unavailable from "./pages/Unavailable";
 import Draw from "./pages/Draw";
 import Done from "./pages/Done";
+import Coupon from "./pages/Coupon";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path="/unavailable" element={<Unavailable />} />
       <Route path="/draw" element={<Draw />} />
       <Route path="/done" element={<Done />} />
+      <Route path="/coupon" element={<Coupon />} />
     </Routes>
   );
 }
