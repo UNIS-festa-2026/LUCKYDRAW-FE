@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Layout from "../layout";
 import HomeCard from "../component/HomeCard";
 import ReviewCard from "../component/ReviewCard";
@@ -28,8 +29,40 @@ const mockReviews = [
 ];
 
 export default function Home() {
+  const navigate = useNavigate();
   const [showChanceNotice, setShowChanceNotice] = useState(true);
   const [isChanceNoticeClosing, setIsChanceNoticeClosing] = useState(false);
+  const [popupText, setPopupText] = useState("100% 당첨 90명 남음!");
+
+  useEffect(() => {
+    const fetchHomeStatus = async () => {
+      try {
+        const apiUrl = import.meta.env.VITE_API_BASE_URL;
+        const response = await fetch(`${apiUrl}/api/lucky-draw/home-status`);
+        const data = await response.json();
+
+        // popup_text 업데이트
+        if (data.popup_text) {
+          setPopupText(data.popup_text);
+        }
+
+        // server_time 기반 시간 확인 (9시 ~ 20시)
+        if (data.server_time) {
+          const serverTime = new Date(data.server_time);
+          const hour = serverTime.getHours();
+
+          if (hour < 9 || hour >= 20) {
+            navigate("/unavailable");
+            return;
+          }
+        }
+      } catch (error) {
+        console.error("Failed to fetch home status:", error);
+      }
+    };
+
+    fetchHomeStatus();
+  }, [navigate]);
 
   useEffect(() => {
     const closeTimer = window.setTimeout(() => {
@@ -51,14 +84,14 @@ export default function Home() {
       {showChanceNotice && (
         <div className="pointer-events-none fixed left-1/2 top-28 z-30 -translate-x-1/2 px-5">
           <div
-            className={`inline-flex items-center justify-center gap-2.5 rounded-[100px] bg-white/70 p-2.5 outline outline-1 outline-offset-[-1px] outline-white backdrop-blur-xs transition-all duration-700 ${
+            className={`min-w-56 inline-flex items-center justify-center gap-2.5 rounded-[100px] bg-white/70 p-2.5 outline outline-1 outline-offset-[-1px] outline-white backdrop-blur-xs transition-all duration-700 ${
               isChanceNoticeClosing
                 ? "translate-y-1 scale-95 opacity-0"
                 : "translate-y-0 scale-100 opacity-100"
             }`}
           >
             <div className="justify-start text-base font-medium leading-6 text-neutral-950">
-              100% 당첨 90명 남음!
+              {popupText}
             </div>
           </div>
         </div>
@@ -69,7 +102,7 @@ export default function Home() {
         상품타자!
       </div>
       <div className="self-stretch justify-start text-[#777777] text-base font-medium leading-6">
-        작년에 300명이나 당첨됐다고??
+        작년에 400개 이상의 상품이 준비되어있다고..?
       </div>
       <div className="w-full">
         <div className="h-3" />

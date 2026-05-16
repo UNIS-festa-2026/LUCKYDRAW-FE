@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-
-const SIGNATURE_STORAGE_KEY = "couponSignatureV1";
+import { useParams } from "react-router-dom";
 
 export default function Coupon() {
+  const { couponId = "1" } = useParams<{ couponId: string }>();
+  const SIGNATURE_STORAGE_KEY = `couponSignatureV1_${couponId}`;
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const isDrawingRef = useRef(false);
   const [hasSignature, setHasSignature] = useState(false);
@@ -43,7 +44,7 @@ export default function Coupon() {
       setHasDrawn(true);
     };
     signatureImage.src = saved;
-  }, []);
+  }, [SIGNATURE_STORAGE_KEY]);
 
   const getContext = () => {
     const canvas = canvasRef.current;

@@ -35,10 +35,6 @@ export default function ReviewCard({
       <div className="left-[52px] top-[17.50px] absolute justify-start text-neutral-950 text-xs font-medium font-['Pretendard'] leading-4">
         {name}
       </div>
-      <div className="absolute left-[100px] top-[20px] h-3 w-px bg-neutral-950"></div>
-      <div className="left-[108px] top-[17.50px] absolute justify-start text-neutral-950 text-xs font-medium font-['Pretendard'] leading-4">
-        {reward}
-      </div>
     </div>
   );
 }

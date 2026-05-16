@@ -23,7 +23,7 @@ export default function Draw() {
   };
 
   return (
-    <div className="relative mx-auto h-[783px] w-full max-w-[375px] overflow-hidden bg-yellow-50">
+    <div className="relative mx-auto h-[783px] w-full max-w-[375px] overflow-hidden bg-[#F9F7E8]">
       <div className="absolute left-0 top-0 inline-flex h-14 w-full items-center justify-center px-5">
         <div className="inline-flex items-center justify-start gap-1">
           <img className="size-6" src="/unis.png" alt="UNIS 로고" />
@@ -59,8 +59,8 @@ export default function Draw() {
           <div className="flex w-full flex-col items-end justify-start gap-5">
             <div className="flex w-full flex-col items-start justify-start gap-5">
               <div className="inline-flex w-full items-center justify-start gap-8">
-                <div className="w-16 text-base font-medium leading-6 text-neutral-950">
-                  이름
+                <div className="min-w-[80px] text-base font-medium leading-6 text-neutral-950">
+                  이름 <span className="text-red-500">*</span>
                 </div>
                 <input
                   type="text"
@@ -73,8 +73,8 @@ export default function Draw() {
               </div>
 
               <div className="inline-flex w-full items-center justify-start gap-8">
-                <div className="w-16 text-base font-medium leading-6 text-neutral-950">
-                  전화번호
+                <div className="min-w-[80px] text-base font-medium leading-6 text-neutral-950">
+                  전화번호 <span className="text-red-500">*</span>
                 </div>
                 <input
                   type="tel"
@@ -88,7 +88,7 @@ export default function Draw() {
 
               <div className="inline-flex w-full items-center justify-start gap-8">
                 <div className="text-base font-medium leading-6 text-neutral-950">
-                  한 줄 후기
+                  한 줄 후기 <span className="text-red-500">*</span>
                 </div>
                 <input
                   type="text"
@@ -101,20 +101,25 @@ export default function Draw() {
               </div>
             </div>
 
-            <button
-              type="button"
-              onClick={handleSubmit}
-              className="inline-flex items-center justify-center gap-2.5 rounded-[50px] bg-pink-200 px-4 py-1"
-            >
-              <div className="text-center text-base font-medium leading-6 text-neutral-950">
-                입력 완료
+            <div className="flex flex-col items-end gap-0 mt-1">
+              <div className="text-xs font-medium text-red-500">
+                * 필수 입력 항목입니다
               </div>
-            </button>
+              <button
+                type="button"
+                onClick={handleSubmit}
+                className="mt-5 inline-flex items-center justify-center gap-2.5 rounded-[50px] bg-pink-200 px-4 py-1"
+              >
+                <div className="text-center text-base font-medium leading-6 text-neutral-950">
+                  입력 완료
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="absolute left-0 top-[727px] inline-flex w-full flex-col items-start justify-start">
+      <div className="absolute left-0 top-[755px] inline-flex w-full flex-col items-start justify-start">
         <div className="flex w-full flex-col items-center justify-start">
           <div className="w-full text-center text-xs font-medium leading-4 text-neutral-500">
             새로고침 시 다시 접근이 어려울 수 있어요.

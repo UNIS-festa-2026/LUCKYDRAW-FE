@@ -19,6 +19,7 @@ function App() {
       <Route path="/draw" element={<Draw />} />
       <Route path="/done" element={<Done />} />
       <Route path="/coupon" element={<Coupon />} />
+      <Route path="/coupon/:couponId" element={<Coupon />} />
     </Routes>
   );
 }

@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { useState, useEffect } from "react";
 
 type LayoutProps = {
   children?: ReactNode;
@@ -6,10 +7,20 @@ type LayoutProps = {
 };
 
 export default function Layout({ children, hideFooter = false }: LayoutProps) {
+  const [currentAd, setCurrentAd] = useState(1);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentAd(Math.floor(Math.random() * 7) + 1);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className="layout-frame flex min-h-screen flex-col justify-between">
+    <div className="layout-frame relative flex min-h-screen flex-col justify-between">
       <div className="flex flex-col">
-        <img src="ad1.png" className="w-full bg-[#090909]" />
+        <img src={`ad${currentAd}.png`} className="w-full bg-[#090909]" />
         <div className="layout-children p-2">{children}</div>
       </div>
 
