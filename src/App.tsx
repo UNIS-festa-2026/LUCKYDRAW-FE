@@ -7,6 +7,9 @@ import Unavailable from "./pages/Unavailable";
 import Draw from "./pages/Draw";
 import Done from "./pages/Done";
 import Coupon from "./pages/Coupon";
+import TarotHome from "./pages/tarot/Home";
+import TarotSelection from "./pages/tarot/Selection";
+import TarotDescription from "./pages/tarot/Description";
 
 function App() {
   return (
@@ -20,6 +23,11 @@ function App() {
       <Route path="/done" element={<Done />} />
       <Route path="/coupon" element={<Coupon />} />
       <Route path="/coupon/:couponId" element={<Coupon />} />
+      {/* Tarot pages */}
+      <Route path="/tarot" element={<TarotHome />} />
+      <Route path="/tarot/home" element={<TarotHome />} />
+      <Route path="/tarot/selection" element={<TarotSelection />} />
+      <Route path="/tarot/description/:cardId" element={<TarotDescription />} />
     </Routes>
   );
 }

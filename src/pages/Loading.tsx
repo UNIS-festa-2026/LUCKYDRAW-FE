@@ -149,6 +149,7 @@ export default function Loading() {
                   alt=""
                   className="block size-full max-w-none"
                   src={prevStep.shapeSrc}
+                  style={{ background: "transparent" }}
                 />
               </div>
             </div>
@@ -167,11 +168,11 @@ export default function Loading() {
                 alt=""
                 className="block size-full max-w-none"
                 src={currentStep.shapeSrc}
+                style={{ background: "transparent" }}
               />
             </div>
           </div>
-          <div className="absolute inset-[-16.67%_-10%] bg-[#d9d9d9] mix-blend-color-burn" />
-          <div className="absolute inset-[-16.67%_-10%] bg-black mix-blend-color-dodge" />
+          {/* PNG 투명도 문제 해결: 불필요한 blend 배경 제거 */}
         </div>
       </div>
     </Layout>
