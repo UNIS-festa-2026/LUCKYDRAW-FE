@@ -4,7 +4,7 @@ import Layout from "../../layout";
 export default function TarotHome() {
   return (
     <Layout>
-      <div className="w-full max-w-[384px] min-h-[calc(100vh-var(--ad-height,80px))] mx-auto relative bg-tarot overflow-hidden flex flex-col items-center pt-8 pb-[33px]">
+      <div className="w-full max-w-[384px] mx-auto relative bg-tarot overflow-hidden flex flex-col items-center pt-8 pb-[80px]">
         {/* 상단 텍스트 */}
         <div className="flex flex-col items-center gap-3 w-full">
           <div className="text-center text-neutral-950 text-4xl font-bold leading-10 font-['Pretendard']">
@@ -24,17 +24,21 @@ export default function TarotHome() {
             </div>
           </div>
         </div>
-        {/* 자동 간격 */}
-        <div className="flex-1" />
-        {/* 하단 버튼 */}
-        <Link
-          to="/tarot/selection"
-          className="w-80 p-2.5 bg-yellow-50 rounded-2xl outline outline-2 outline-offset-[-2px] outline-neutral-950 flex justify-center items-center gap-2.5"
+
+        {/* 하단 버튼: fixed로 하단 25px 고정 */}
+        <div
+          className="w-full max-w-[384px] px-5 fixed left-1/2"
+          style={{ bottom: 25, transform: "translateX(-50%)" }}
         >
-          <div className="text-center text-neutral-950 text-xl font-bold font-['Pretendard'] leading-8">
-            타로 보러가기
-          </div>
-        </Link>
+          <Link
+            to="/tarot/selection"
+            className="w-full p-2.5 bg-yellow-50 rounded-2xl outline outline-2 outline-offset-[-2px] outline-neutral-950 flex justify-center items-center gap-2.5"
+          >
+            <div className="text-center text-neutral-950 text-xl font-bold font-['Pretendard'] leading-8">
+              타로 보러가기
+            </div>
+          </Link>
+        </div>
       </div>
     </Layout>
   );
