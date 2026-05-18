@@ -4,27 +4,19 @@ import Layout from "../layout";
 import HomeCard from "../component/HomeCard";
 import ReviewCard from "../component/ReviewCard";
 
-const mockReviews = [
+// 서버에서 받아온 후기 리스트 상태
+const initialReviews = [
   {
     id: 1,
     name: "김*민 벗",
-    reward: "스타벅스",
     comment: "와 저 진짜 당첨됐어요!!!",
     variant: "pink" as const,
   },
   {
     id: 2,
-    name: "이*현 벗",
-    reward: "치킨",
-    comment: "990원으로 치킨 받아서 개이득",
+    name: "이*서 벗",
+    comment: "우와 맛있게 먹을게요~",
     variant: "yellow" as const,
-  },
-  {
-    id: 3,
-    name: "이*현 벗",
-    reward: "치킨",
-    comment: "990원으로 치킨 받아서 개이득",
-    variant: "pink" as const,
   },
 ];
 
@@ -33,35 +25,48 @@ export default function Home() {
   const [showChanceNotice, setShowChanceNotice] = useState(true);
   const [isChanceNoticeClosing, setIsChanceNoticeClosing] = useState(false);
   const [popupText, setPopupText] = useState("100% 당첨 90명 남음!");
+  const [dynamicReviews, setDynamicReviews] = useState(initialReviews);
 
   useEffect(() => {
-    const fetchHomeStatus = async () => {
+    const fetchHome = async () => {
       try {
         const apiUrl = import.meta.env.VITE_API_BASE_URL;
-        const response = await fetch(`${apiUrl}/api/lucky-draw/home-status`);
+        const response = await fetch(`${apiUrl}/api/lucky-draw/home`);
         const data = await response.json();
 
-        // popup_text 업데이트
-        if (data.popup_text) {
-          setPopupText(data.popup_text);
+        // 남은 인원 텍스트
+        if (typeof data.remaining_winner_slots === "number") {
+          setPopupText(`100% 당첨 ${data.remaining_winner_slots}명 남음!`);
         }
 
-        // server_time 기반 시간 확인 (9시 ~ 20시)
-        if (data.server_time) {
-          const serverTime = new Date(data.server_time);
-          const hour = serverTime.getHours();
+        // 후기 리스트
+        if (Array.isArray(data.reviews)) {
+          setDynamicReviews(
+            data.reviews.map((r, idx) => ({
+              id: idx + 1,
+              name: r.masked_name + " 벗",
+              comment: r.review,
+              variant: idx % 2 === 0 ? "pink" : "yellow",
+            })),
+          );
+        }
 
-          if (hour < 9 || hour >= 20) {
-            navigate("/unavailable");
-            return;
+        // is_open 값에 따라 라우팅
+        if (data.is_open === true) {
+          // 이미 홈(/)이면 이동하지 않음
+          if (window.location.pathname !== "/") {
+            navigate("/");
           }
+        } else {
+          navigate("/unavailable");
+          return;
         }
       } catch (error) {
-        console.error("Failed to fetch home status:", error);
+        console.error("Failed to fetch home:", error);
       }
     };
 
-    fetchHomeStatus();
+    fetchHome();
   }, [navigate]);
 
   useEffect(() => {
@@ -114,7 +119,7 @@ export default function Home() {
           </div>
           <div className="w-full overflow-x-auto">
             <div className="flex w-max flex-row gap-2 pb-1">
-              {mockReviews.map((review) => (
+              {dynamicReviews.map((review) => (
                 <ReviewCard
                   key={review.id}
                   name={review.name}

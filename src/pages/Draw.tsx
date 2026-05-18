@@ -1,8 +1,9 @@
 ﻿import { useState, type ChangeEvent } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function Draw() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -17,9 +18,32 @@ export default function Draw() {
     }));
   };
 
-  const handleSubmit = () => {
-    console.log("입력 완료:", formData);
-    navigate("/done");
+  const handleSubmit = async () => {
+    try {
+      // entryId는 location.state에서 받아옴
+      const entryId = location.state?.entry_id;
+      if (!entryId) {
+        alert("entry_id가 없습니다. 다시 시도해 주세요.");
+        return;
+      }
+      const apiUrl = import.meta.env.VITE_API_BASE_URL;
+      const response = await fetch(
+        `${apiUrl}/api/lucky-draw/entries/${entryId}/winner-info`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        },
+      );
+      if (!response.ok) {
+        throw new Error("서버 오류");
+      }
+      navigate("/done");
+    } catch (e) {
+      alert("정보 제출에 실패했습니다. 다시 시도해 주세요.");
+    }
   };
 
   return (

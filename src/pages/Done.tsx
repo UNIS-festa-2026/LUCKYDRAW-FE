@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 export default function Done() {
+  const navigate = useNavigate();
   return (
     <div className="relative mx-auto h-[783px] w-full max-w-96 overflow-hidden bg-yellow-50">
       <div className="absolute left-0 top-[616px] inline-flex w-96 flex-col items-center justify-start gap-4">
@@ -16,6 +19,7 @@ export default function Done() {
             <button
               type="button"
               className="flex h-12 flex-1 items-center justify-center gap-2.5 rounded-[100px] bg-pink-200 p-2.5 outline outline-[1.5px] outline-offset-[-1.5px] outline-pink-200"
+              onClick={() => navigate("/tarot")}
             >
               <div className="text-center text-base font-medium leading-6 text-neutral-950">
                 오늘의 운세 보기

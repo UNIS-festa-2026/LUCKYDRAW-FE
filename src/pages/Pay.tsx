@@ -22,17 +22,8 @@ export default function Pay() {
       const apiUrl = import.meta.env.VITE_API_BASE_URL;
       const sessionId = crypto.randomUUID();
 
-      const response = await fetch(`${apiUrl}/api/luckydraw/entries`, {
+      const response = await fetch(`${apiUrl}/api/lucky-draw/entries`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          payment_method: "BANK_TRANSFER",
-          amount: 990,
-          depositor_name: "홍길동",
-          session_id: sessionId,
-        }),
       });
 
       const data = await response.json();
