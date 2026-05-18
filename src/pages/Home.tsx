@@ -102,7 +102,7 @@ export default function Home() {
         상품타자!
       </div>
       <div className="self-stretch justify-start text-[#777777] text-base font-medium leading-6">
-        작년에 400개 이상의 상품이 준비되어있다고..?
+        400개 이상의 상품이 준비되어있다고..?
       </div>
       <div className="w-full">
         <div className="h-3" />
