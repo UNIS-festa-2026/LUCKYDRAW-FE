@@ -137,24 +137,23 @@ export default function TarotDescription() {
         )}
       </div>
 
-      {/* 토스트 모달 - 화면 정중앙 */}
+      {/* 토스트 모달 - 위치만 홈과 동일 */}
       {showToast && (
         <div
           style={{
             position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100vw",
-            height: "100vh",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            left: "50%",
+            top: "7rem", // top-28
+            transform: "translateX(-50%)",
             zIndex: 9999,
             pointerEvents: "none",
           }}
         >
           <div className="px-16 py-3 bg-neutral-950 rounded-xl outline outline-1 outline-offset-[-1px] outline-yellow-50 inline-flex flex-col justify-center items-center">
-            <div className="text-center text-yellow-50 text-base font-medium font-['Pretendard'] leading-6">
+            <div
+              className="text-center text-yellow-50 text-base font-medium font-['Pretendard'] leading-6"
+              style={{ whiteSpace: "nowrap" }}
+            >
               이미지가 저장되었습니다.
             </div>
           </div>
