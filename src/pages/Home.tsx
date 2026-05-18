@@ -118,7 +118,6 @@ export default function Home() {
                 <ReviewCard
                   key={review.id}
                   name={review.name}
-                  reward={review.reward}
                   comment={review.comment}
                   variant={review.variant}
                 />
