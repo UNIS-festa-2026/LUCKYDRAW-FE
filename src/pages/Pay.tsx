@@ -20,7 +20,6 @@ export default function Pay() {
 
     try {
       const apiUrl = import.meta.env.VITE_API_BASE_URL;
-      const sessionId = crypto.randomUUID();
 
       const response = await fetch(`${apiUrl}/api/lucky-draw/entries`, {
         method: "POST",

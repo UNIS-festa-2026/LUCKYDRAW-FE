@@ -1,4 +1,9 @@
 import { useEffect, useState } from "react";
+
+type Review = {
+  masked_name: string;
+  review: string;
+};
 import { useNavigate } from "react-router-dom";
 import Layout from "../layout";
 import HomeCard from "../component/HomeCard";
@@ -42,7 +47,7 @@ export default function Home() {
         // 후기 리스트
         if (Array.isArray(data.reviews)) {
           setDynamicReviews(
-            data.reviews.map((r, idx) => ({
+            data.reviews.map((r: Review, idx: number) => ({
               id: idx + 1,
               name: r.masked_name + " 벗",
               comment: r.review,

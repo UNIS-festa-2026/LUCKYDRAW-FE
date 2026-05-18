@@ -1,0 +1,34 @@
+<svg width="60" height="24" viewBox="0 0 60 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_335_1509)">
+<g filter="url(#filter0_f_335_1509)">
+<rect x="24.2002" y="6.59961" width="10.8" height="10.8" rx="5.4" fill="#A3E635"/>
+</g>
+<g filter="url(#filter1_f_335_1509)">
+<rect x="24.2002" y="6.59961" width="10.8" height="10.8" rx="5.4" fill="#A3E635"/>
+</g>
+<foreignObject x="16" y="-2" width="28" height="28"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(3px);clip-path:url(#bgblur_1_335_1509_clip_path);height:100%;width:100%"></div></foreignObject><g filter="url(#filter2_f_335_1509)" data-figma-bg-blur-radius="6">
+<path d="M30 4C34.4183 4 38 7.58172 38 12C38 16.4183 34.4183 20 30 20C25.5817 20 22 16.4183 22 12C22 7.58172 25.5817 4 30 4Z" fill="white" fill-opacity="0.05"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_f_335_1509" x="22.2002" y="4.59961" width="14.7998" height="14.8008" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="1" result="effect1_foregroundBlur_335_1509"/>
+</filter>
+<filter id="filter1_f_335_1509" x="22.2002" y="4.59961" width="14.7998" height="14.8008" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="1" result="effect1_foregroundBlur_335_1509"/>
+</filter>
+<filter id="filter2_f_335_1509" x="16" y="-2" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="1" result="effect1_foregroundBlur_335_1509"/>
+</filter>
+<clipPath id="bgblur_1_335_1509_clip_path" transform="translate(-16 2)"><path d="M30 4C34.4183 4 38 7.58172 38 12C38 16.4183 34.4183 20 30 20C25.5817 20 22 16.4183 22 12C22 7.58172 25.5817 4 30 4Z"/>
+</clipPath><clipPath id="clip0_335_1509">
+<rect width="60" height="24" fill="white"/>
+</clipPath>
+</defs>
+</svg>

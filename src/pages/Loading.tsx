@@ -14,7 +14,7 @@ type LoadingStep = {
 
 const loadingSteps: LoadingStep[] = [
   {
-    shapeSrc: "/step=1.png",
+    shapeSrc: "/step=1.svg",
     shapeClassName: "left-[62px] top-[11px] size-[45px]",
     shapeInsetClassName: "inset-[-25%]",
     glowLeftA: "50%",
@@ -23,7 +23,7 @@ const loadingSteps: LoadingStep[] = [
     glowColor: "#a3e635",
   },
   {
-    shapeSrc: "/step=2.png",
+    shapeSrc: "/step=2.svg",
     shapeClassName: "left-[34px] top-[11px] h-[45px] w-[102px]",
     shapeInsetClassName: "inset-[-12.5%_-5.56%]",
     glowLeftA: "calc(50% - 19px)",
@@ -32,7 +32,7 @@ const loadingSteps: LoadingStep[] = [
     glowColor: "#facc15",
   },
   {
-    shapeSrc: "/step=3.png",
+    shapeSrc: "/step=3.svg",
     shapeClassName: "left-[25px] top-[11px] h-[45px] w-[119px]",
     shapeInsetClassName: "inset-[-25%_-9.52%]",
     glowLeftA: "calc(50% - 28px)",
@@ -41,7 +41,7 @@ const loadingSteps: LoadingStep[] = [
     glowColor: "#fb923c",
   },
   {
-    shapeSrc: "/step=4.png",
+    shapeSrc: "/step=4.svg",
     shapeClassName: "left-[6px] top-[11px] h-[45px] w-[159px]",
     shapeInsetClassName: "inset-[-25%_-7.14%]",
     glowLeftA: "calc(50% - 60px)",
@@ -50,7 +50,7 @@ const loadingSteps: LoadingStep[] = [
     glowColor: "#f87171",
   },
   {
-    shapeSrc: "/step=5.png",
+    shapeSrc: "/step=5.svg",
     shapeClassName: "left-[25px] top-[11px] h-[45px] w-[119px]",
     shapeInsetClassName: "inset-[-25%_-9.52%]",
     glowLeftA: "calc(50% - 28px)",
@@ -59,7 +59,7 @@ const loadingSteps: LoadingStep[] = [
     glowColor: "#fb923c",
   },
   {
-    shapeSrc: "/step=6.png",
+    shapeSrc: "/step=6.svg",
     shapeClassName: "left-[34px] top-[11px] h-[45px] w-[102px]",
     shapeInsetClassName: "inset-[-12.5%_-5.56%]",
     glowLeftA: "calc(50% - 19px)",
@@ -68,7 +68,7 @@ const loadingSteps: LoadingStep[] = [
     glowColor: "#facc15",
   },
   {
-    shapeSrc: "/step=7.png",
+    shapeSrc: "/step=7.svg",
     shapeClassName: "left-[62px] top-[11px] size-[45px]",
     shapeInsetClassName: "inset-[-12.5%]",
     glowLeftA: "calc(50% - 1px)",
