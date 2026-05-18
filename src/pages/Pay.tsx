@@ -7,7 +7,7 @@ export default function Pay() {
   const navigate = useNavigate();
   const accountNumber = "카카오뱅크 3333-28-4110761";
   const [showToast, setShowToast] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  // ...existing code...
 
   const handleCopyAccount = async () => {
     await navigator.clipboard.writeText(accountNumber);
@@ -16,7 +16,6 @@ export default function Pay() {
   };
 
   const handlePaymentComplete = async () => {
-    setIsLoading(true);
     navigate("/loading");
 
     try {
@@ -46,7 +45,7 @@ export default function Pay() {
       }
     } catch (error) {
       console.error("Payment failed:", error);
-      setIsLoading(false);
+      // ...existing code...
       // 에러 처리 (선택사항)
     }
   };

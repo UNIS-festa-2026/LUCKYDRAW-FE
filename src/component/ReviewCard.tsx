@@ -2,7 +2,6 @@ type ReviewCardVariant = "pink" | "yellow";
 
 type ReviewCardProps = {
   name: string;
-  reward: string;
   comment: string;
   variant?: ReviewCardVariant;
 };
@@ -14,7 +13,6 @@ const variantClassName: Record<ReviewCardVariant, string> = {
 
 export default function ReviewCard({
   name,
-  reward,
   comment,
   variant = "pink",
 }: ReviewCardProps) {

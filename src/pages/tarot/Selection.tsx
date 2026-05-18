@@ -47,7 +47,7 @@ function TarotSelection() {
   const handleCardClick = (idx: number) => {
     if (flipped[idx]) return;
     setFlipped((prev) => prev.map((f, i) => (i === idx ? true : f)));
-    const cardId = shuffledCards[idx].split('_')[0];
+    const cardId = shuffledCards[idx].split("_")[0];
     // 카드 DOM 위치/크기 측정
     const btn = cardRefs.current[idx];
     let rect: DOMRect | undefined;
@@ -88,7 +88,9 @@ function TarotSelection() {
         {shuffledCards.map((img, i) => (
           <div key={i} className="w-[60px] h-[85px] perspective-[600px]">
             <button
-              ref={el => (cardRefs.current[i] = el)}
+              ref={(el) => {
+                cardRefs.current[i] = el;
+              }}
               className="w-full h-full p-0 m-0 flex items-center justify-center overflow-visible bg-transparent border-none cursor-pointer"
               style={{ boxShadow: "none", border: "none" }}
               onClick={() => handleCardClick(i)}
