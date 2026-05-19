@@ -1,5 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useRef } from "react";
+import cardDescriptions from "./cardDescriptions.json";
 
 const imgOpenInNew =
   "https://www.figma.com/api/mcp/asset/a598251e-988c-4397-b059-d56ecaf11279";
@@ -72,6 +73,7 @@ export default function TarotDescription() {
     ? `/cards/${cardImages[cardIdx]}`
     : undefined;
   const cardName = cardNames[cardIdx] || "";
+  const cardDescObj = cardDescriptions[cardIdx] || {};
 
   const [showToast, setShowToast] = useState(false);
   const downloadRef = useRef<HTMLAnchorElement>(null);
@@ -126,12 +128,13 @@ export default function TarotDescription() {
               />
             </div>
             <div className="self-stretch text-center justify-center text-neutral-950 text-xl font-bold font-['Pretendard'] leading-8 mt-7">
-              계획대로 안되지만 더 재밌어질 거예요
+              {cardDescObj.description}
             </div>
-            <div className="self-stretch text-center justify-center text-neutral-950 text-base font-medium font-['Pretendard'] leading-6 mt-1">
-              오늘은 평소에 안 하던 선택이 더 잘 맞아요.
-              <br />
-              눈에 띄는 부스에 가보세요!
+            <div
+              className="self-stretch text-center justify-center text-neutral-950 text-base font-medium font-['Pretendard'] leading-6 mt-1"
+              style={{ whiteSpace: "pre-line" }}
+            >
+              {cardDescObj.detail}
             </div>
           </>
         )}
