@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import Layout from "../layout";
 
 export default function Kwang() {
+  const navigate = useNavigate();
   const handleShare = async () => {
     const shareData = {
       title: "LUCKY DRAW",
@@ -52,6 +54,7 @@ export default function Kwang() {
           <button
             type="button"
             className="flex h-12 flex-1 items-center justify-center rounded-[100px] border-[1.5px] border-pink-200 bg-pink-200 px-2.5"
+            onClick={() => navigate("/tarot")}
           >
             <span className="text-base font-medium leading-6 text-neutral-950">
               오늘의 운세 보기

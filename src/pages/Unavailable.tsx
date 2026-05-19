@@ -1,6 +1,8 @@
 import Layout from "../layout";
+import { useNavigate } from "react-router-dom";
 
 export default function Unavailable() {
+  const navigate = useNavigate();
   return (
     <Layout>
       <div className="relative mx-auto h-[703px] w-full max-w-96 overflow-hidden">
@@ -20,6 +22,7 @@ export default function Unavailable() {
           <button
             type="button"
             className="flex h-12 flex-1 items-center justify-center rounded-[100px] border-[1.5px] border-pink-200 bg-pink-200 px-2.5"
+            onClick={() => navigate("/tarot")}
           >
             <span className="text-base font-medium leading-6 text-neutral-950">
               오늘의 운세 보기
