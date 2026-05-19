@@ -43,7 +43,7 @@ function App() {
       <Route path="/coupon/:couponId" element={<Coupon />} />
       <Route path="/coupon/:couponId/:index" element={<Coupon />} />
       {/* 모든 쿠폰을 라우팅으로 접근 가능하게 */}
-      {couponList.map((name, idx) => (
+      {couponList.map((name) => (
         <Route
           key={name}
           path={`/coupon/${encodeURIComponent(name)}`}
