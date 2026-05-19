@@ -120,7 +120,7 @@ export default function TarotDescription() {
       <div className="flex flex-col items-center mt-5">
         {cardImg && (
           <>
-            <div className="w-72 h-96 bg-yellow-50 rounded-[19.90px] outline outline-2 outline-offset-[-2px] outline-neutral-950 inline-flex justify-center items-center mb-6">
+            <div className="w-72 h-96 rounded-[19.90px] outline outline-2 outline-offset-[-2px] outline-neutral-950 inline-flex justify-center items-center mb-6">
               <img
                 src={cardImg}
                 alt={cardName}

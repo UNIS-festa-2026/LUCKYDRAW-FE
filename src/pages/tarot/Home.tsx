@@ -32,7 +32,7 @@ export default function TarotHome() {
         >
           <Link
             to="/tarot/selection"
-            className="w-full p-2.5 bg-yellow-50 rounded-2xl outline outline-2 outline-offset-[-2px] outline-neutral-950 flex justify-center items-center gap-2.5"
+            className="w-full p-2.5 rounded-2xl outline outline-2 outline-offset-[-2px] outline-neutral-950 flex justify-center items-center gap-2.5"
           >
             <div className="text-center text-neutral-950 text-xl font-bold font-['Pretendard'] leading-8">
               타로 보러가기

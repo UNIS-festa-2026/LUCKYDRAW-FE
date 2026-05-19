@@ -8,7 +8,7 @@ type ReviewCardProps = {
 
 const variantClassName: Record<ReviewCardVariant, string> = {
   pink: "bg-red-50 border-pink-200",
-  yellow: "bg-yellow-50 border-amber-200",
+  yellow: "border-amber-200",
 };
 
 export default function ReviewCard({

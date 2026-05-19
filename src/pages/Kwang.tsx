@@ -25,7 +25,7 @@ export default function Kwang() {
 
   return (
     <Layout hideFooter>
-      <div className="relative mx-auto h-[703px] w-full max-w-96 overflow-hidden bg-yellow-50">
+      <div className="relative mx-auto h-[703px] w-full max-w-96 overflow-hidden">
         <div className="absolute left-1/2 top-[123px] z-20 w-[263px] -translate-x-1/2">
           <img src="/sorryuni.svg" alt="쏘리 유니" className="w-full" />
         </div>

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 export default function Done() {
   const navigate = useNavigate();
   return (
-    <div className="relative mx-auto h-[783px] w-full max-w-96 overflow-hidden bg-yellow-50">
+    <div className="relative mx-auto h-[783px] w-full max-w-96 overflow-hidden">
       <div className="absolute left-0 top-[616px] inline-flex w-96 flex-col items-center justify-start gap-4">
         <div className="flex w-full flex-col items-center justify-start gap-3">
           <div className="inline-flex w-full items-center justify-start gap-3 px-5">
