@@ -2,6 +2,23 @@ import { useNavigate } from "react-router-dom";
 
 export default function Done() {
   const navigate = useNavigate();
+
+  // 공유하기 핸들러
+  const handleShare = () => {
+    const shareUrl = window.location.origin + "/";
+    if (navigator.share) {
+      navigator
+        .share({
+          title: "럭키드로우 신청 완료!",
+          text: "럭키드로우 이벤트에 참여해보세요!",
+          url: shareUrl,
+        })
+        .catch(() => {});
+    } else {
+      alert("이 브라우저에서는 공유 기능이 지원되지 않습니다.");
+    }
+  };
+
   return (
     <div className="relative mx-auto h-[783px] w-full max-w-96 overflow-hidden">
       <div className="absolute left-0 top-[616px] inline-flex w-96 flex-col items-center justify-start gap-4">
@@ -10,6 +27,7 @@ export default function Done() {
             <button
               type="button"
               className="flex h-12 flex-1 items-center justify-center gap-2.5 rounded-[100px] bg-white/50 p-2.5 outline outline-[1.5px] outline-offset-[-1.5px] outline-pink-300/60"
+              onClick={handleShare}
             >
               <div className="text-center text-base font-medium leading-6 text-neutral-950">
                 친구한테 공유하기

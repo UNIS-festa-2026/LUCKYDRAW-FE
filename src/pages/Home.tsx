@@ -47,7 +47,7 @@ export default function Home() {
         // 후기 리스트
         if (Array.isArray(data.reviews)) {
           setDynamicReviews(
-            data.reviews.map((r: Review, idx: number) => ({
+            data.reviews.slice(0, 7).map((r: Review, idx: number) => ({
               id: idx + 1,
               name: r.masked_name + " 벗",
               comment: r.review,
@@ -124,7 +124,7 @@ export default function Home() {
           </div>
           <div className="w-full overflow-x-auto">
             <div className="flex w-max flex-row gap-2 pb-1">
-              {dynamicReviews.map((review) => (
+              {dynamicReviews.slice(0, 7).map((review) => (
                 <ReviewCard
                   key={review.id}
                   name={review.name}

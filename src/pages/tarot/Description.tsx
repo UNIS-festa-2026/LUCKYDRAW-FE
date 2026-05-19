@@ -53,12 +53,13 @@ const cardNames = [
 
 export default function TarotDescription() {
   const handleShare = () => {
+    const shareUrl = `${window.location.origin}/tarot`;
     if (navigator.share) {
       navigator
         .share({
           title: "타로 카드 결과",
           text: "내 타로 카드 결과를 공유해요!",
-          url: window.location.href,
+          url: shareUrl,
         })
         .catch(() => {});
     } else {

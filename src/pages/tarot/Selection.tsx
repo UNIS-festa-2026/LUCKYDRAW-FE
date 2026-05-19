@@ -107,6 +107,22 @@ function TarotSelection() {
   const targetTop =
     typeof window !== "undefined" ? window.innerHeight / 2 - TARGET_H / 2 : 0;
 
+  // 공유하기 핸들러
+  const handleShare = () => {
+    const shareUrl = `${window.location.origin}/tarot`;
+    if (navigator.share) {
+      navigator
+        .share({
+          title: "타로 카드 뽑기",
+          text: "타로 카드 뽑기 페이지를 공유해요!",
+          url: shareUrl,
+        })
+        .catch(() => {});
+    } else {
+      alert("이 브라우저에서는 공유 기능이 지원되지 않습니다.");
+    }
+  };
+
   return (
     <div className="bg-[#f3c9e4] min-h-screen w-full flex flex-col items-center">
       {/* 헤더 */}
@@ -117,7 +133,12 @@ function TarotSelection() {
             UNIS 중앙실전 IT창업학회
           </span>
         </div>
-        <img src={imgOpenInNew} alt="open in new" className="w-6 h-6" />
+        <button
+          onClick={handleShare}
+          className="w-6 h-6 p-0 bg-transparent border-none cursor-pointer"
+        >
+          <img src={imgOpenInNew} alt="공유하기" className="w-6 h-6" />
+        </button>
       </div>
 
       {/* 안내 문구 */}
