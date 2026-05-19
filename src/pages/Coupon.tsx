@@ -2,8 +2,13 @@ import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 
 export default function Coupon() {
-  const { couponId = "1" } = useParams<{ couponId: string }>();
-  const SIGNATURE_STORAGE_KEY = `couponSignatureV1_${couponId}`;
+  const { couponId = "1", index } = useParams<{
+    couponId: string;
+    index?: string;
+  }>();
+  // index가 있으면 couponId와 index를 합쳐서 키 생성
+  const signatureKey = index ? `${couponId}_${index}` : couponId;
+  const SIGNATURE_STORAGE_KEY = `couponSignatureV1_${signatureKey}`;
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const isDrawingRef = useRef(false);
   const [hasSignature, setHasSignature] = useState(false);
@@ -160,7 +165,14 @@ export default function Coupon() {
           </div>
 
           <div className="w-full drop-shadow-[0px_2px_3px_rgba(0,0,0,0.15)]">
-            <img src="/coupon1.png" alt="부스 쿠폰" className="w-full" />
+            <img
+              src={`/${decodeURIComponent(couponId)}.png`}
+              alt={decodeURIComponent(couponId)}
+              className="w-full"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = "/coupon1.png";
+              }}
+            />
           </div>
         </div>
 

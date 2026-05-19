@@ -1,5 +1,6 @@
 ﻿import { useState, type ChangeEvent } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { prizeNameToImageFile } from "../utils/prizeImage";
 
 export default function Draw() {
   const navigate = useNavigate();
@@ -46,6 +47,13 @@ export default function Draw() {
     }
   };
 
+  // 상품명 및 이미지 처리
+  const prizeName = location.state?.prize?.name;
+  const prizeImgSrc = prizeName
+    ? prizeNameToImageFile(prizeName)
+    : "/sb5000.png";
+  const prizeAlt = prizeName || "스타벅스 5000원 쿠폰";
+
   return (
     <div className="relative mx-auto h-[783px] w-full max-w-[375px] overflow-hidden bg-[#F9F7E8]">
       <div className="absolute left-0 top-0 inline-flex h-14 w-full items-center justify-center px-5">
@@ -64,8 +72,8 @@ export default function Draw() {
 
         <div className="relative h-[181px] w-[335px]">
           <img
-            src="/sb5000.png"
-            alt="스타벅스 5000원 쿠폰"
+            src={prizeImgSrc}
+            alt={prizeAlt}
             className="h-full w-full object-contain"
           />
         </div>
