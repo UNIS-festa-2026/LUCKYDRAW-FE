@@ -20,7 +20,6 @@ export default function Pay() {
   };
   useEffect(() => {
     copiedOnce.current = false;
-    setShowWarn(false);
   }, []);
 
   const handlePaymentComplete = async () => {
