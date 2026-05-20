@@ -1,21 +1,37 @@
 import Button from "../component/Button";
 import Layout from "../layout";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Pay() {
   const navigate = useNavigate();
   const accountNumber = "카카오뱅크 3333-28-4110761";
   const [showToast, setShowToast] = useState(false);
+  const [showWarn, setShowWarn] = useState(false);
+  const copiedOnce = useRef(false);
   // ...existing code...
 
   const handleCopyAccount = async () => {
     await navigator.clipboard.writeText(accountNumber);
     setShowToast(true);
+    setShowWarn(false);
+    copiedOnce.current = true;
     setTimeout(() => setShowToast(false), 2000);
   };
+  useEffect(() => {
+    copiedOnce.current = false;
+    setShowWarn(false);
+  }, []);
 
   const handlePaymentComplete = async () => {
+    if (!copiedOnce.current) {
+      if (!showWarn) {
+        setShowWarn(true);
+        setTimeout(() => setShowWarn(false), 2000);
+        return;
+      }
+      // showWarn이 이미 true면 경고를 한 번 보여줬으니 그냥 진행
+    }
     navigate("/loading");
 
     try {
@@ -47,6 +63,20 @@ export default function Pay() {
           <div className="min-w-52 p-2.5 bg-white/70 rounded-[100px] outline outline-1 outline-offset-[-1px] outline-white backdrop-blur-xs inline-flex justify-center items-center gap-2.5">
             <div className="justify-start text-neutral-950 text-base font-medium font-['Pretendard'] leading-6">
               계좌번호가 복사되었습니다.
+            </div>
+          </div>
+        </div>
+      )}
+      {showWarn && (
+        <div className="fixed left-1/2 top-28 z-30 -translate-x-1/2">
+          <div className="w-auto px-6 p-2.5 bg-white/70 rounded-[100px] outline outline-1 outline-offset-[-1px] outline-white backdrop-blur-xs flex justify-center items-center gap-2.5 text-center whitespace-nowrap">
+            <div className="text-base font-medium font-['Pretendard'] leading-6">
+              <span className="text-red-500">잠깐! </span>
+              <span className="text-neutral-950">
+                계좌번호를 복사하지 않았어요.
+                <br />
+                송금을 확인해주세요.
+              </span>
             </div>
           </div>
         </div>
@@ -86,9 +116,14 @@ export default function Pay() {
 
       <div className="w-full flex flex-col items-center gap-3">
         <Button onClick={handlePaymentComplete} />
-        <div className="justify-start text-neutral-500 text-xs font-medium font-['Pretendard'] leading-4">
-          * 이벤트 특성 상 환불이 불가합니다
-          <br />* 당첨 시 송금을 확인할 예정입니다
+        <div className="text-center justify-start">
+          <span className="text-neutral-500 text-xs font-medium font-['Pretendard'] leading-4">
+            * 이벤트 특성 상 환불이 불가합니다
+            <br />
+          </span>
+          <span className="text-red-500 text-xs font-medium font-['Pretendard'] leading-4">
+            * 송금 전 완료 버튼을 누를 시 당첨이 취소됩니다
+          </span>
         </div>
       </div>
     </Layout>
